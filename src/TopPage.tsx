@@ -8,17 +8,18 @@ export const TopPage: FunctionComponent = () => {
     const [currentLang, setCurrentLang] = useState("ja");
     // Change language of i18n
     useEffect(() => {
-        i18n.changeLanguage(currentLang);
+
     }, [currentLang, i18n]);
     // Handler
     const handleLanguageSelectionChange = (lang: string) => {
-        setCurrentLang(lang);
+        i18n.changeLanguage(lang);
+        window.localStorage.setItem("lang", lang);
     }
     return (
         <>
             <header className="header">
-                <button onClick={() => { handleLanguageSelectionChange("ja") }}>Tieng Anh</button>
-                <button onClick={() => { handleLanguageSelectionChange("en") }}>Tieng Nhat</button>
+                <button onClick={() => { handleLanguageSelectionChange("ja") }}>Tieng Nhat</button>
+                <button onClick={() => { handleLanguageSelectionChange("en") }}>Tieng Anh</button>
             </header>
         </>
     )
